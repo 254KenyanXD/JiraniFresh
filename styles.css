@@ -143,8 +143,8 @@ nav a:hover {
 ------------------------------------ */
 .glass-widget {
     width: 90%;
-    max-width: 550px;
-    margin: auto;
+    max-width: 900px;
+    margin: 40px auto;
     padding: 30px;
     border-radius: 15px;
 
@@ -157,6 +157,17 @@ nav a:hover {
     box-shadow: 0 6px 25px rgba(0,0,0,0.35);
 }
 
+/* FIX: Force white color on all essential content elements inside glass widget */
+.glass-widget h2,
+.glass-widget h3,
+.glass-widget p,
+.glass-widget span,
+.glass-widget label,
+.glass-widget td,
+.glass-widget th {
+    color: white !important;
+}
+
 /* FORCE ALL FORMS TO STACK VERTICALLY */
 .glass-widget form {
     display: block !important;
@@ -164,7 +175,6 @@ nav a:hover {
 }
 
 .glass-widget label {
-    color: white;
     margin-top: 15px;
     margin-bottom: 5px;
     font-size: 1.05rem;
@@ -182,6 +192,7 @@ nav a:hover {
     margin-bottom: 15px;
     font-size: 1rem;
     background: rgba(255,255,255,0.9);
+    color: #333 !important; /* Make text dark inside inputs */
 }
 
 
@@ -198,6 +209,8 @@ nav a:hover {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    position: relative; 
+    z-index: 1; 
 }
 
 .farmer-background {
@@ -290,31 +303,43 @@ nav a:hover {
     height: 60px;
     object-fit: cover;
     border-radius: 8px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.qty-controls {
+    display: flex; 
+    gap: 8px; 
+    align-items: center;
+    justify-content: center; /* Center controls in the cell */
 }
 
 .qty-btn {
     padding: 5px 12px;
-    background: #2AB7A9;
+    background: rgba(255, 255, 255, 0.4);
     color: white;
     border: none;
     border-radius: 6px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 .qty-btn:hover {
-    background: #1f8f86;
+    background: rgba(255, 255, 255, 0.6);
 }
 
 .remove-btn {
-    background: red !important;
+    background: #e53935 !important;
     color: white !important;
     padding: 10px 16px !important;
     border: none !important;
     border-radius: 8px !important;
     font-weight: bold !important;
     cursor: pointer !important;
+    transition: background 0.3s;
+    width: auto;
 }
 
 .remove-btn:hover {
@@ -324,27 +349,89 @@ nav a:hover {
 
 
 /* ------------------------------------
-   CHECKOUT TABLE
+   CHECKOUT TABLE (Applied to Cart and Checkout)
 ------------------------------------ */
 .checkout-table {
     width: 100%;
-    background: rgba(255,255,255,0.15);
     border-radius: 12px;
     overflow: hidden;
     color: white;
-    backdrop-filter: blur(8px);
+    border-collapse: collapse;
 }
 
 .checkout-table th,
 .checkout-table td {
     padding: 12px;
     border-bottom: 1px solid rgba(255,255,255,0.25);
+    text-align: left;
+    vertical-align: middle; 
 }
 
 .checkout-table th {
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.25);
+    font-weight: bold;
 }
 
+/* FIX: Precise alignment of column headers and data */
+
+/* Item column (1st) - Left aligned */
+.checkout-table th:nth-child(1),
+.checkout-table td:nth-child(1) {
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+/* Qty column (2nd) - Center aligned */
+.checkout-table th:nth-child(2),
+.checkout-table td:nth-child(2) {
+    text-align: center;
+}
+
+/* Price column (3rd) - Center aligned */
+.checkout-table th:nth-child(3),
+.checkout-table td:nth-child(3) {
+    text-align: center;
+}
+
+/* Total column (4th) - Center aligned */
+.checkout-table th:nth-child(4),
+.checkout-table td:nth-child(4) {
+    text-align: center;
+}
+
+/* Remove column (5th) - Center aligned */
+.checkout-table th:nth-child(5),
+.checkout-table td:nth-child(5) {
+    text-align: center;
+}
+
+
+
+/* ------------------------------------
+   TOAST MESSAGE (ADD TO CART Notification)
+------------------------------------ */
+.toast-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.toast-success {
+    background-color: #4CAF50; /* Green */
+}
+
+.toast-error {
+    background-color: #f44336; /* Red */
+}
 
 
 /* ------------------------------------
@@ -373,6 +460,7 @@ nav a:hover {
     padding: 12px;
     border-bottom: 1px solid #ddd;
     text-align: center;
+    color: #333 !important;
 }
 
 .admin-list-img {

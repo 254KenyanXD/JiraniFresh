@@ -5,7 +5,6 @@
 
 <h2 class="page-title">Fresh Products</h2>
 
-<!-- SEARCH + FILTER BAR -->
 <div class="search-filter-bar">
     <input type="text" id="searchBox" placeholder="Search products...">
 
@@ -22,7 +21,6 @@
 </div>
 
 
-<!-- PRODUCT GRID (ALL products load at once) -->
 <div id="productGrid" class="product-grid">
 
 <?php
@@ -53,7 +51,6 @@ while ($row = $result->fetch_assoc()):
 </div>
 
 
-<!-- PAGINATION BUTTONS -->
 <div id="pagination" class="pagination"></div>
 
 </div>
@@ -61,8 +58,6 @@ while ($row = $result->fetch_assoc()):
 <?php include "includes/footer.php"; ?>
 
 
-
-<!-- ************** JAVASCRIPT SECTION ************** -->
 
 <script>
 // (1) ADD TO CART -- SILENT AJAX
@@ -79,10 +74,40 @@ function addToCart(id) {
     })
     .then(res => res.text())
     .then(result => {
-        if (result === "OK") {
-            alert("Item added to cart!");
+        // Use .trim() to ignore any whitespace before or after 'OK'
+        if (result.trim() === "OK") { 
+            showToast("Item added to cart successfully!");
+        } else {
+            console.error('Server response:', result); 
+            // Display part of the error response for debugging
+            showToast("Error adding item to cart. (Received: " + result.trim().substring(0, 20) + "...) ", true);
         }
+    })
+    .catch(error => {
+        console.error('Fetch error:', error);
+        showToast("Network error. Could not add item.", true);
     });
+}
+
+function showToast(message, isError = false) {
+    let toast = document.getElementById("toastMessage");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toastMessage";
+        document.body.appendChild(toast);
+    }
+    
+    toast.textContent = message;
+    
+    toast.className = isError ? "toast-message toast-error" : "toast-message toast-success";
+
+    // Show the toast
+    toast.style.opacity = "1";
+    
+    // Hide the toast after 3 seconds
+    setTimeout(() => {
+        toast.style.opacity = "0";
+    }, 3000);
 }
 
 
