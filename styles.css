@@ -1,0 +1,383 @@
+/* ------------------------------------
+   GLOBAL RESET
+------------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+
+
+/* ------------------------------------
+   NAVIGATION BAR
+------------------------------------ */
+.transparent-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    color: white;
+    z-index: 20;
+    transition: background 0.4s, padding 0.4s;
+}
+
+.header-scrolled {
+    background: rgba(0,0,0,0.8);
+    padding: 10px 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+nav a {
+    color: white;
+    margin-left: 25px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.motto {
+    font-size: 0.9rem;
+    color: #dffdf7;
+}
+
+
+
+/* ------------------------------------
+   LANDING PAGE
+------------------------------------ */
+.landing-hero {
+    height: 100vh;
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.1)),
+        url('assets/landing.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.55);
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 750px;
+    text-align: center;
+    color: white;
+}
+
+
+
+/* ------------------------------------
+   BUTTONS
+------------------------------------ */
+.hero-btn,
+.btn {
+    background: #2AB7A9;
+    padding: 12px 25px;
+    color: white;
+    border-radius: 6px;
+    width: auto;
+    border: none;
+    display: inline-block;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.hero-btn:hover,
+.btn:hover {
+    background: #1f8f86;
+}
+
+
+
+/* ------------------------------------
+   PAGE TITLES
+------------------------------------ */
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px black;
+}
+
+
+
+/* ------------------------------------
+   GLASS WIDGETS (Farmer & Checkout)
+------------------------------------ */
+.glass-widget {
+    width: 90%;
+    max-width: 550px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    box-shadow: 0 6px 25px rgba(0,0,0,0.35);
+}
+
+/* FORCE ALL FORMS TO STACK VERTICALLY */
+.glass-widget form {
+    display: block !important;
+    width: 100%;
+}
+
+.glass-widget label {
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+    display: block;
+}
+
+.glass-widget input,
+.glass-widget textarea,
+.glass-widget select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.9);
+}
+
+
+
+/* ------------------------------------
+   PAGE BACKGROUNDS
+------------------------------------ */
+.products-background {
+    min-height: 100vh;
+    padding-top: 120px;
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.6)),
+        url('assets/products_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.farmer-background {
+    min-height: 100vh;
+    padding-top: 120px;
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.65)),
+        url('assets/farmer_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+}
+
+.checkout-background {
+    min-height: 100vh;
+    padding-top: 120px;
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+        url('assets/checkout_bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+/* ------------------------------------
+   PRODUCT PAGE
+------------------------------------ */
+.search-filter-bar {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#searchBox,
+#categoryFilter {
+    padding: 12px 15px;
+    width: 260px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+}
+
+.product-grid {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+.product-card {
+    background: rgba(255,255,255,0.96);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+}
+
+.product-img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 17px;
+    text-align: center;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2AB7A9;
+}
+
+
+
+/* ------------------------------------
+   CART PAGE
+------------------------------------ */
+.cart-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.qty-btn {
+    padding: 5px 12px;
+    background: #2AB7A9;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.qty-btn:hover {
+    background: #1f8f86;
+}
+
+.remove-btn {
+    background: red !important;
+    color: white !important;
+    padding: 10px 16px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+
+.remove-btn:hover {
+    background: #b80000 !important;
+}
+
+
+
+/* ------------------------------------
+   CHECKOUT TABLE
+------------------------------------ */
+.checkout-table {
+    width: 100%;
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    color: white;
+    backdrop-filter: blur(8px);
+}
+
+.checkout-table th,
+.checkout-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+.checkout-table th {
+    background: rgba(0,0,0,0.35);
+}
+
+
+
+/* ------------------------------------
+   ADMIN PAGE
+------------------------------------ */
+.admin-background {
+    min-height: 100vh;
+    padding-top: 120px;
+    background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+        url('assets/admin_bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.admin-table {
+    width: 100%;
+    background: rgba(255,255,255,0.96);
+    border-radius: 10px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.admin-list-img {
+    width: 80px !important;
+    height: 80px !important;
+    object-fit: cover;
+    border-radius: 6px;
+}
